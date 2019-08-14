@@ -1,0 +1,36 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.wrapper {
+    margin: 0px auto;
+    padding: 50px;
+    width: 1000px;
+}
+
+.add_section {
+    display: inline-block;
+}
+
+.list_section {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 100px;
+}
+
+.view_button {
+    background:none;
+    color:inherit;
+    border:none; 
+    padding:0;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.description_box {
+    display: inline-block;
+    vertical-align: top;
+    width: 600px;
+}

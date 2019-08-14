@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Books and Authors</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/books_authors_app/css/style.css' %}">
+</head>
+<body>
+    <div class = "wrapper">
+        <div class = "add_section">
+            <h1>Add a Book</h1>
+            <form action = '/books/create_book' method = 'post'>
+                <label for="title">Title</label>
+                <input class="form-control" type="text" placeholder="Title" id = "title" name = "title" style = "width: 400px">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name = "description" rows="5"></textarea>
+                <button class="btn btn-primary" type="submit" style = "margin-top: 20px">Add</button>
+            </form>
+        </div>
+        <div class = "list_section">
+            <table class="table table-bordered table-dark">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for book in books %}
+                    <tr>
+                    <td>{{ book.id }}</td>
+                    <td style = "width:250px">{{ book.title }}</td>
+                    <td>
+                        <form action = '/books/{{ book.id }}'>
+                            <button type = "submit" class = "view_button">View</button>
+                        </form>
+                    </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                </tbody>
+            </table>
+        </div>
+        <form action = '/authors'>
+            <button class="btn btn-primary" type="submit" style = "margin-top: 50px">See Authors...</button>
+        </form>
+    </div>
+</body>

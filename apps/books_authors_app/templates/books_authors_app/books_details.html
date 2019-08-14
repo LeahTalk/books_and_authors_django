@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Books and Authors</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static '/books_authors_app/css/style.css' %}">
+</head>
+<body>
+    <div class = "wrapper">
+      <form action = '/'>
+        <button class="btn btn-primary" type="submit" style = "margin-bottom: 30px">Back to Books</button>
+      </form>
+      <h1>{{ title }}</h1>
+      <p>ID: {{ id }}</p>
+      <p style = 'display: inline-block'>Description: </p>
+      <div class = "description_box">
+        <p>{{ description }}</p>
+      </div>
+      <p>Authors:</p>
+      <ul>
+          {% for author in book_authors %}
+            <li>{{ author.first_name }} {{ author.last_name }}</li>
+          {% endfor %}
+      </ul>
+      <form>
+          <select class="form-control" id="authors" style = 'width: 300px'>
+              {% for author in all_authors %}
+                <option>{{ author.first_name }} {{ author.last_name }}</option>
+              {% endfor %}
+          </select>
+          <button class="btn btn-primary" type="submit" style = "margin-top: 20px">Add</button>
+      </form>
+    </div>
+</body>
+</html>
