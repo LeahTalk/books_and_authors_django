@@ -24,13 +24,15 @@
             <li>{{ book.title }}</li>
           {% endfor %}
       </ul>
-      <form>
-          <select class="form-control" id="authors" style = 'width: 300px'>
+      <form action = '/authors/add_book' method = 'post'>
+          {% csrf_token %}
+          <input type = "hidden" name = 'author_id' value = {{ id }}>
+          <select class="form-control" id="books" style = 'width: 300px' name = 'selected_book'>
               {% for book in all_books %}
                 <option>{{ book.title }}</option>
               {% endfor %}
           </select>
-          <button class="btn btn-primary" type="submit" style = "margin-top: 20px">Add</button>
+          <button class="btn btn-primary" type="submit" style = "margin-top: 20px">Add Book</button>
       </form>
     </div>
 </body>

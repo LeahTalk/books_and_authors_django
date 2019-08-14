@@ -12,6 +12,7 @@
         <div class = "add_section">
             <h1>Add a Book</h1>
             <form action = '/books/create_book' method = 'post'>
+                {% csrf_token %}
                 <label for="title">Title</label>
                 <input class="form-control" type="text" placeholder="Title" id = "title" name = "title" style = "width: 400px">
                 <label for="description">Description</label>
